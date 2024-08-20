@@ -1,4 +1,4 @@
-package com.montonurb.demo_park_api.config;
+package com.montonurb.demo_park_api.Configurations;
 import java.util.TimeZone;
 
 import org.springframework.context.annotation.Configuration;
