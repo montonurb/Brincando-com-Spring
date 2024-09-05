@@ -12,9 +12,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.montonurb.demo_park_api.Dto.Mapper.UsuarioMapper;
+import com.montonurb.demo_park_api.Dto.UsuarioCreateDto;
+import com.montonurb.demo_park_api.Dto.UsuarioPasswordDto;
+import com.montonurb.demo_park_api.Dto.UsuarioResponseDto;
 import com.montonurb.demo_park_api.Entities.Usuario;
 import com.montonurb.demo_park_api.Services.UsuarioService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 
@@ -26,27 +31,26 @@ public class UsuarioController {
     private final UsuarioService usuarioService;
 
     @PostMapping
-    public ResponseEntity<Usuario> criarUsuario(@RequestBody Usuario usuario) {
-        Usuario user = usuarioService.salvar(usuario);
-        return ResponseEntity.status(HttpStatus.CREATED).body(user);
+    public ResponseEntity<UsuarioResponseDto> criarUsuario(@Valid @RequestBody UsuarioCreateDto usuarioDto) {
+        Usuario user = usuarioService.salvar(UsuarioMapper.toUsuario(usuarioDto));
+        return ResponseEntity.status(HttpStatus.CREATED).body(UsuarioMapper.toDto(user));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Usuario> getById(@PathVariable Long id) {
+    public ResponseEntity<UsuarioResponseDto> getById(@PathVariable Long id) {
         Usuario user = usuarioService.buscarPorId(id);
-        return ResponseEntity.ok(user);
+        return ResponseEntity.ok(UsuarioMapper.toDto(user));
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Usuario> alterarSenha(@PathVariable Long id, @RequestBody Usuario usuario) {
-        Usuario user = usuarioService.editarSenha(id, usuario.getPassword());
-        return ResponseEntity.ok(user);
+    public ResponseEntity<Void> alterarSenha(@PathVariable Long id, @Valid @RequestBody UsuarioPasswordDto usuarioDto) {
+        usuarioService.editarSenha(id, usuarioDto.getOldPassword(), usuarioDto.getNewPassword(), usuarioDto.getConfirmPassword());
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/")
-    public ResponseEntity<List<Usuario>> getAll() {
+    public ResponseEntity<List<UsuarioResponseDto>> getAll() {
         List<Usuario> users = usuarioService.buscarTodos();
-        return ResponseEntity.ok(users);
+        return ResponseEntity.ok(UsuarioMapper.toListDto(users));
     }
-    
 }
