@@ -1,4 +1,4 @@
-package com.montonurb.demo_park_api.Controllers;
+package com.montonurb.demo_park_api.Web.Controllers;
 
 import java.util.List;
 
@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.montonurb.demo_park_api.Dto.Mapper.UsuarioMapper;
-import com.montonurb.demo_park_api.Dto.UsuarioCreateDto;
-import com.montonurb.demo_park_api.Dto.UsuarioPasswordDto;
-import com.montonurb.demo_park_api.Dto.UsuarioResponseDto;
 import com.montonurb.demo_park_api.Entities.Usuario;
 import com.montonurb.demo_park_api.Services.UsuarioService;
+import com.montonurb.demo_park_api.Web.Dto.UsuarioCreateDto;
+import com.montonurb.demo_park_api.Web.Dto.UsuarioPasswordDto;
+import com.montonurb.demo_park_api.Web.Dto.UsuarioResponseDto;
+import com.montonurb.demo_park_api.Web.Dto.Mapper.UsuarioMapper;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

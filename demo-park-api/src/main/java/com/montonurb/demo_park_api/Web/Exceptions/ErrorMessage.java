@@ -1,4 +1,4 @@
-package com.montonurb.demo_park_api.Exceptions;
+package com.montonurb.demo_park_api.Web.Exceptions;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,6 +6,8 @@ import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.Getter;
@@ -19,6 +21,7 @@ public class ErrorMessage {
     private int status;
     private String statusText;
     private String message;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Map<String, String> errors;
 
     public ErrorMessage(HttpServletRequest request, HttpStatus status, String message) {

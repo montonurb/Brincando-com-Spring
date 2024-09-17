@@ -1,4 +1,4 @@
-package com.montonurb.demo_park_api.Dto.Mapper;
+package com.montonurb.demo_park_api.Web.Dto.Mapper;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -6,9 +6,9 @@ import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
 
-import com.montonurb.demo_park_api.Dto.UsuarioCreateDto;
-import com.montonurb.demo_park_api.Dto.UsuarioResponseDto;
 import com.montonurb.demo_park_api.Entities.Usuario;
+import com.montonurb.demo_park_api.Web.Dto.UsuarioCreateDto;
+import com.montonurb.demo_park_api.Web.Dto.UsuarioResponseDto;
 
 public class UsuarioMapper {
 

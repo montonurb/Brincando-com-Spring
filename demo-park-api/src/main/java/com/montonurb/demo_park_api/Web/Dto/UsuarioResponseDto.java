@@ -1,4 +1,4 @@
-package com.montonurb.demo_park_api.Dto;
+package com.montonurb.demo_park_api.Web.Dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

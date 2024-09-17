@@ -1,4 +1,4 @@
-package com.montonurb.demo_park_api.Dto;
+package com.montonurb.demo_park_api.Web.Dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
